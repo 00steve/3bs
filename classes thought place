@@ -1,0 +1,77 @@
+input/source:
+ - Name()
+ - Type()
+ 	- rotaryEncoder
+ 	- button
+ 	- voltageJack
+ - ValueRef()
+ - ValueMax()
+ - ValueMin()
+ - ValueType()
+ - GetValue()
+ - SampleValue()
+ 
+output/destination:
+ - Name()
+ - Type()
+ 	- voltageJack
+ 		- PWM (teensy default pin outputs)
+ 		- MCP4728 (4 4096step DACs)
+ - ValueRef()
+ - ValueMax()
+ - ValueMin()
+ - ValueType()
+ - SetValue()
+ 
+ menu:
+ - Options()
+ - Draw()
+ - Layout()
+ 
+ option:
+ - Draw()
+ - Type()
+ - Action()
+ 
+ valueType:
+ - typeID
+ 	- boolean
+ 	- float
+ 	- int
+ 
+hardware:
+ - Inputs()
+ - Outputs()
+ 
+
+
+algorithm:
+ - Init()
+ - Run()
+ - Draw()
+ - Outputs()
+ - Inputs()
+ - Reset()
+ - GetMenu(string menuName)
+ 
+
+ 	
+inputmap:
+ - SetInputMap()
+ - GetInputMap()
+
+outputmap:
+ - SetOutputMap()
+ - GetOutputMap()
+ 
+ui:
+ - default options
+ 	- choose algorithm
+ 	- save
+ 	- reset
+ 	- load
+ - SetMenu(algorithm.GetMenu())
+ 
+
+ 	
+
