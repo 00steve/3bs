@@ -161,20 +161,15 @@ double ThreeBody::MaxRadius(){
 
 void ThreeBody::OnMenuAction(MenuAction* menuAction,void* object){
     switch(menuAction->MenuActionType()){
+    case MENUACTION_MenuBack:
+        menuStack.RemoveLast();
+        break;
     case MENUACTION_MenuLink:
         Menu* menu = static_cast<Menu*>(menuAction->GetTarget());
-        ThreeBody* prog = static_cast<ThreeBody*>(object);
-        if(!menu || !prog) return;
-        Serial.println("change menu");
-        Serial.print("- new menu address: " );
-        Serial.println(reinterpret_cast<intptr_t>(menu));
-        Serial.print("- three body address: " );
-        Serial.println(reinterpret_cast<intptr_t>(prog));
-
-        (*prog).SetCurrentMenu(menu);
+        if(!menu) return;
+        menuStack.Add(menu);
         break;
     }
-    //Program::OnMenuAction(menuAction, program);
 }
 
 TB3F ThreeBody::RandomPointInSphere(double sphereRadius){
@@ -259,9 +254,13 @@ bool ThreeBody::SetupInputs(){
 bool ThreeBody::SetupMenus(){
     fileMenu = new VerticalListMenu();
     mainMenu = new VerticalListMenu();
+    simMenu = new VerticalListMenu();
+
+    //set root menu
+    menuStack.Add(mainMenu);
 
     //file menu
-    fileMenu->AddOption(new MenuLink(CCTC("Back"), mainMenu));
+    fileMenu->AddOption(new MenuBack(CCTC("Back")));
     fileMenu->AddOption(new MenuLink(CCTC("Save")));
     fileMenu->AddOption(new MenuLink(CCTC("Load")));
     fileMenu->AddOption(new MenuLink(CCTC("Clear")));
@@ -275,32 +274,26 @@ bool ThreeBody::SetupMenus(){
     mainMenu->ScrollLoop(false);
     mainMenu->AddOption(new MenuLink(CCTC("3 Body")));
     mainMenu->AddOption(new MenuLink(CCTC("File"), fileMenu));
-    mainMenu->AddOption(new MenuLink(CCTC("Sim")));
+    mainMenu->AddOption(new MenuLink(CCTC("Sim"), simMenu));
     mainMenu->AddOption(new MenuLink(CCTC("I/O")));
     mainMenu->AddOption(new MenuLink(CCTC("Display")));
-    mainMenu->AddOption(new MenuLink(CCTC("Test 1")));
-    mainMenu->AddOption(new MenuLink(CCTC("Test 2")));
-    mainMenu->AddOption(new MenuLink(CCTC("Test 3")));
     //mainMenu->SetInputDown(Inputs().Find(CCTC("<- Button")));//figure out some way to search for objects in list based on a property
     ((VerticalListMenu*)mainMenu)->SetInputDown(Inputs()[0]);
     ((VerticalListMenu*)mainMenu)->SetInputUp(Inputs()[1]);
     ((VerticalListMenu*)mainMenu)->SetInputSelect(Inputs()[2]);
     mainMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
 
-    /*
-    MenuAction m = MenuAction(MENUACTION_MenuLink);
-    void* tb = this;
-    m.SetTarget(fileMenu);
-    OnMenuAction(&m, tb);
-    */
+    //sim menu
+    simMenu->AddOption(new MenuBack(CCTC("Back")));
+    mainMenu->AddOption(new MenuLink(CCTC("Physics")));
+    mainMenu->AddOption(new MenuLink(CCTC("Bodies")));
 
-    Serial.print("actual file menu address: " );
-    Serial.println(reinterpret_cast<intptr_t>(fileMenu));
 
-    //Serial.print("actual three body address: " );
-    //Serial.println(reinterpret_cast<intptr_t>(this));
 
-    SetCurrentMenu(mainMenu);
+
+
+    //Serial.print("actual file menu address: " );
+    //Serial.println(reinterpret_cast<intptr_t>(fileMenu));
     return true;
 }
 

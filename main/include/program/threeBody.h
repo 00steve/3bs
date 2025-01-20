@@ -15,6 +15,7 @@
 
 #include "../input/inputSoftwareVariable.h"
 
+#include "../menuOption/menuBack.h"
 #include "../menuOption/menuLink.h"
 #include "../menu/verticalListMenu.h"
 
@@ -67,6 +68,7 @@ private:
     //menus
     Menu* fileMenu = NULL;
     Menu* mainMenu = NULL;
+    Menu* simMenu = NULL;
 
     //private internal delicious functions of glorious goodness.
     void ApplyDragToVelocity();

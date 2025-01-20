@@ -1,6 +1,7 @@
 #ifndef UTILS_MenuAction
 #define UTILS_MenuAction
 
+#define MENUACTION_MenuBack 2
 #define MENUACTION_MenuLink 0
 #define MENUACTION_SetValue 1
 

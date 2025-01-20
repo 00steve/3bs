@@ -22,7 +22,7 @@ private:
 
 protected:
     static Adafruit_SSD1306* display;
-    StaticList<Menu*> menuStack = StaticList<Menu*>(10);
+    static StaticList<Menu*> menuStack;
 
     void SampleInputs();
     virtual bool SetupInputs() = 0;
@@ -35,7 +35,6 @@ public:
     Menu* CurrentMenu();
     virtual StaticList<Input*> Inputs() = 0;
     virtual void Run() = 0;
-    void SetCurrentMenu(Menu* newMenu);
     static void SetDisplay(Adafruit_SSD1306* newDisplay);
     static StaticList<Input*> SystemInputs();
 

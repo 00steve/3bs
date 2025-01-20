@@ -2,6 +2,7 @@
 
 //static members
 Adafruit_SSD1306* Program::display;
+StaticList<Menu*> Program::menuStack = StaticList<Menu*>(10);
 StaticList<Input*> Program::systemInputs = StaticList<Input*>(PROGRAM_AVAILABLE_INPUTS);
 StaticList<Output*> Program::systemOutputs = StaticList<Output*>(PROGRAM_AVAILABLE_OUTPUTS);
 
@@ -16,7 +17,7 @@ void Program::AddSystemOutput(Output* newOutput){
 }
 
 Menu* Program::CurrentMenu(){
-    return currentMenu;
+    return menuStack[menuStack.Count()-1];
 }
 
 void Program::SampleInputs(){
@@ -24,10 +25,6 @@ void Program::SampleInputs(){
     while(i --> 0){
         systemInputs[i]->SampleValue();
     }
-}
-
-void Program::SetCurrentMenu(Menu* newMenu){
-    currentMenu = newMenu;
 }
 
 void Program::SetDisplay(Adafruit_SSD1306* newDisplay){

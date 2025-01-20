@@ -37,6 +37,12 @@ public:
         return length;
     }
 
+    bool RemoveLast(){
+        if(!count) return false;
+        --count;
+        return true;
+    }
+
     StaticList(unsigned int length) : 
             count(0){
         this->length = length;
