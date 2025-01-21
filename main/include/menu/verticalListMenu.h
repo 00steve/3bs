@@ -24,15 +24,18 @@ private:
     Trigger triggerUp;
 
     void SetCurrentPixelScroll();
+    void Setup();
 
 public:
     void Draw();
     MenuAction* GetAction();
     void Run();
+    void SetInputAll(Input* newDownInput, Input* newUpInput, Input* newSelectInput);
     void SetInputDown(Input* newInput);
     void SetInputSelect(Input* newInput);
     void SetInputUp(Input* newInput);
     VerticalListMenu();
+    VerticalListMenu(Input* newDownInput, Input* newUpInput, Input* newSelectInput);
 
 };
 

@@ -252,8 +252,10 @@ bool ThreeBody::SetupInputs(){
 }
 
 bool ThreeBody::SetupMenus(){
+    bodiesMenu = new VerticalListMenu();
     fileMenu = new VerticalListMenu();
     mainMenu = new VerticalListMenu();
+    physicsMenu = new VerticalListMenu();
     simMenu = new VerticalListMenu();
 
     //set root menu
@@ -271,7 +273,6 @@ bool ThreeBody::SetupMenus(){
     fileMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
     
     //main menu
-    mainMenu->ScrollLoop(false);
     mainMenu->AddOption(new MenuLink(CCTC("3 Body")));
     mainMenu->AddOption(new MenuLink(CCTC("File"), fileMenu));
     mainMenu->AddOption(new MenuLink(CCTC("Sim"), simMenu));
@@ -283,11 +284,31 @@ bool ThreeBody::SetupMenus(){
     ((VerticalListMenu*)mainMenu)->SetInputSelect(Inputs()[2]);
     mainMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
 
+    //bodies menu
+    bodiesMenu->AddOption(new MenuBack(CCTC("Back")));
+    ((VerticalListMenu*)bodiesMenu)->SetInputDown(Inputs()[0]);
+    ((VerticalListMenu*)bodiesMenu)->SetInputUp(Inputs()[1]);
+    ((VerticalListMenu*)bodiesMenu)->SetInputSelect(Inputs()[2]);
+    bodiesMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
+
+    //physics menu
+    physicsMenu->AddOption(new MenuBack(CCTC("Back")));
+    physicsMenu->AddOption(new MenuLink(CCTC("Gravity")));
+    physicsMenu->AddOption(new MenuLink(CCTC("Vel. Damp")));
+    physicsMenu->AddOption(new MenuLink(CCTC("FPS")));
+    ((VerticalListMenu*)physicsMenu)->SetInputDown(Inputs()[0]);
+    ((VerticalListMenu*)physicsMenu)->SetInputUp(Inputs()[1]);
+    ((VerticalListMenu*)physicsMenu)->SetInputSelect(Inputs()[2]);
+    physicsMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
+
     //sim menu
     simMenu->AddOption(new MenuBack(CCTC("Back")));
-    mainMenu->AddOption(new MenuLink(CCTC("Physics")));
-    mainMenu->AddOption(new MenuLink(CCTC("Bodies")));
-
+    simMenu->AddOption(new MenuLink(CCTC("Physics"), physicsMenu));
+    simMenu->AddOption(new MenuLink(CCTC("Bodies"), bodiesMenu));
+    ((VerticalListMenu*)simMenu)->SetInputDown(Inputs()[0]);
+    ((VerticalListMenu*)simMenu)->SetInputUp(Inputs()[1]);
+    ((VerticalListMenu*)simMenu)->SetInputSelect(Inputs()[2]);
+    simMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
 
 
 

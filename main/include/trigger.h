@@ -5,9 +5,9 @@ class Trigger {
 private:
     double currentValue = 0;
     bool fire = false;
-    double previousValue = 0;
-    bool primed = true;
     double highThreshold;
+    double previousValue;
+    bool primed = true;
     double* value;
 
 public:

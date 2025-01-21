@@ -58,6 +58,12 @@ void VerticalListMenu::SetCurrentPixelScroll(){
     currentPixelScroll = (double)currentIndex * rowPixelSize;
 }
 
+void VerticalListMenu::SetInputAll(Input* newDownInput, Input* newUpInput, Input* newSelectInput){
+    SetInputDown(newDownInput);
+    SetInputUp(newUpInput);
+    SetInputSelect(newSelectInput);
+}
+
 void VerticalListMenu::SetInputDown(Input* newInput){
     inputDown = newInput;
     triggerDown = Trigger(inputDown->ValueRef(),.9);
@@ -73,6 +79,15 @@ void VerticalListMenu::SetInputUp(Input* newInput){
     triggerUp = Trigger(inputUp->ValueRef(),.9);
 }
 
-VerticalListMenu::VerticalListMenu(){
+void VerticalListMenu::Setup(){
     scrollSlew = AddSlew(&currentPixelScroll,CURVE_LINEAR,.15);
+}
+
+VerticalListMenu::VerticalListMenu(){
+    Setup();
+}
+
+VerticalListMenu::VerticalListMenu(Input* newDownInput, Input* newUpInput, Input* newSelectInput){
+    Setup();
+    SetInputAll(newDownInput,newUpInput,newSelectInput);
 }

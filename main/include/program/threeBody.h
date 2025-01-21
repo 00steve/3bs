@@ -66,8 +66,10 @@ private:
     float timeUntilNextRefreshMicros = 0;
 
     //menus
+    Menu* bodiesMenu = NULL;
     Menu* fileMenu = NULL;
     Menu* mainMenu = NULL;
+    Menu* physicsMenu = NULL;
     Menu* simMenu = NULL;
 
     //private internal delicious functions of glorious goodness.

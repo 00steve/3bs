@@ -13,5 +13,6 @@ Trigger::Trigger(){
 
 Trigger::Trigger(double* refValue, double triggerThreshold) : 
         highThreshold(triggerThreshold),
+        previousValue(triggerThreshold),
         value(refValue){
 }
