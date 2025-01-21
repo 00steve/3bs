@@ -6,11 +6,6 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
 
-#include "menuConfiguration.h"
-#include "menuOption.h"
-#include "menuAction.h"
-#include "staticList.h"
-#include "input.h"
 
 #define MENU_INPUT_UP 0
 #define MENU_INPUT_DOWN 1
@@ -19,9 +14,19 @@
 #define MENU_INPUT_FORWARD 4
 #define MENU_INPUT_BACK 5
 
+#define MENU_INPUT_TYPE_COUNT 6
+
 #define MENU_INPUT_UP_DEFAULT 1
 #define MENU_INPUT_DOWN_DEFAULT 0
-#define MENU_INPUT_LEFT_DEFAULT 2
+#define MENU_INPUT_FORWARD_DEFAULT 2
+
+
+#include "menuConfiguration.h"
+#include "menuOption.h"
+#include "menuAction.h"
+#include "staticList.h"
+#include "input.h"
+
 
 class Menu{
 private:

@@ -252,11 +252,17 @@ bool ThreeBody::SetupInputs(){
 }
 
 bool ThreeBody::SetupMenus(){
-    bodiesMenu = new VerticalListMenu();
-    fileMenu = new VerticalListMenu();
-    mainMenu = new VerticalListMenu();
-    physicsMenu = new VerticalListMenu();
-    simMenu = new VerticalListMenu();
+    //build default vertical list menu configuration
+    //verticalListMenuDefault.inputs[MENU_INPUT_DOWN] = Inputs()[MENU_INPUT_DOWN_DEFAULT];
+    //verticalListMenuDefault.inputs[MENU_INPUT_UP] = Inputs()[MENU_INPUT_UP_DEFAULT];
+    //verticalListMenuDefault.inputs[MENU_INPUT_FORWARD] = Inputs()[MENU_INPUT_FORWARD_DEFAULT];
+
+    //create menu objects
+    bodiesMenu = new VerticalListMenu(verticalListMenuDefault);
+    fileMenu = new VerticalListMenu(verticalListMenuDefault);
+    mainMenu = new VerticalListMenu(verticalListMenuDefault);
+    physicsMenu = new VerticalListMenu(verticalListMenuDefault);
+    simMenu = new VerticalListMenu(verticalListMenuDefault);
 
     //set root menu
     menuStack.Add(mainMenu);

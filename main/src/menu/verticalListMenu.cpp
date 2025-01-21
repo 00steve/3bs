@@ -1,5 +1,11 @@
 #include "../../include/menu/verticalListMenu.h"
 
+void VerticalListMenu::Configure(MenuConfiguration newConfiguration){
+    //SetInputDown(newConfiguration.inputs[MENU_INPUT_DOWN]);
+    //SetInputSelect(newConfiguration.inputs[MENU_INPUT_FORWARD]);
+    //SetInputUp(newConfiguration.inputs[MENU_INPUT_UP]);
+}
+
 void VerticalListMenu::Draw(){
     unsigned int optionCount = 4;
     unsigned int i = 0;//currentIndex;// > Options().Count()-optionCount ? Options().Count()-optionCount : currentIndex;
@@ -66,16 +72,19 @@ void VerticalListMenu::SetInputAll(Input* newDownInput, Input* newUpInput, Input
 
 void VerticalListMenu::SetInputDown(Input* newInput){
     inputDown = newInput;
+    if(!newInput) return;
     triggerDown = Trigger(inputDown->ValueRef(),.9);
 }
 
 void VerticalListMenu::SetInputSelect(Input* newInput){
     inputSelect = newInput;
+    if(!newInput) return;
     triggerSelect = Trigger(inputSelect->ValueRef(),.9);
 }
 
 void VerticalListMenu::SetInputUp(Input* newInput){
     inputUp = newInput;
+    if(!newInput) return;
     triggerUp = Trigger(inputUp->ValueRef(),.9);
 }
 
@@ -90,4 +99,10 @@ VerticalListMenu::VerticalListMenu(){
 VerticalListMenu::VerticalListMenu(Input* newDownInput, Input* newUpInput, Input* newSelectInput){
     Setup();
     SetInputAll(newDownInput,newUpInput,newSelectInput);
+}
+
+VerticalListMenu::VerticalListMenu(MenuConfiguration newConfiguration){
+    Setup();
+    Configure(newConfiguration);
+
 }

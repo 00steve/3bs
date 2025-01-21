@@ -49,8 +49,8 @@ public:
         items = new T[length];
     }
 
-    T operator[](unsigned int index){
-        while(index >= count) index -= count;
+    T& operator[](unsigned int index){
+        //while(index >= count) index -= count;
         return items[index];
     }
 

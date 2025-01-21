@@ -15,6 +15,7 @@
 
 #include "../input/inputSoftwareVariable.h"
 
+#include "../menuConfiguration.h"
 #include "../menuOption/menuBack.h"
 #include "../menuOption/menuLink.h"
 #include "../menu/verticalListMenu.h"
@@ -66,6 +67,7 @@ private:
     float timeUntilNextRefreshMicros = 0;
 
     //menus
+    MenuConfiguration verticalListMenuDefault;
     Menu* bodiesMenu = NULL;
     Menu* fileMenu = NULL;
     Menu* mainMenu = NULL;

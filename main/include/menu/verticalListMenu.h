@@ -27,6 +27,7 @@ private:
     void Setup();
 
 public:
+    void Configure(MenuConfiguration newConfiguration);
     void Draw();
     MenuAction* GetAction();
     void Run();
@@ -36,7 +37,7 @@ public:
     void SetInputUp(Input* newInput);
     VerticalListMenu();
     VerticalListMenu(Input* newDownInput, Input* newUpInput, Input* newSelectInput);
-
+    VerticalListMenu(MenuConfiguration newConfiguration);
 };
 
 
