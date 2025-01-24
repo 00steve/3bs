@@ -32,6 +32,7 @@ struct TBBody {
     TB3F    position;
     double   radius; //m
     TB3F    velocity; //m/s
+    bool    selected;
 
 };
 

@@ -89,6 +89,7 @@ ThreeBody ThreeBody::CreateRandom(int newBodyCount,double sphereRadius){
         tb.body[i].position = ThreeBody::RandomPointInSphere(tb.maxRadius);
         tb.body[i].position = tb.body[i].position.Normalized() * tb.maxRadius;
         tb.body[i].velocity = TB3F(0,0,0);
+        tb.body[i].selected = false;
     }
     Init(tb);
     return tb;
@@ -104,6 +105,7 @@ ThreeBody ThreeBody::CreateRandom2D(int newBodyCount,double sphereRadius){
         tb.body[i].position.z = 0;
         tb.body[i].position = tb.body[i].position.Normalized() * tb.maxRadius;
         tb.body[i].velocity = TB3F(0,0,0);
+        tb.body[i].selected = false;
     }
     Init(tb);
     return tb;
