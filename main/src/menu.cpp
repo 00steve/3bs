@@ -15,6 +15,10 @@ StaticList<MenuOption*> Menu::Options(){
     return options;
 }
 
+void Menu::RemoveAllOptions(){
+    options.Clear();
+}
+
 bool Menu::ScrollLoop(){
     return scrollLoop;
 }

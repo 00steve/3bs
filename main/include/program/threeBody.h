@@ -18,6 +18,7 @@
 #include "../menuConfiguration.h"
 #include "../menuOption/menuBack.h"
 #include "../menuOption/menuLink.h"
+#include "../menuOption/menuVariable.h"
 #include "../menu/verticalListMenu.h"
 
 
@@ -77,6 +78,7 @@ private:
     //private internal delicious functions of glorious goodness.
     void ApplyDragToVelocity();
     void ApplyGravity(TBBody& a, TBBody& b);
+    void BuildBodiesMenu();
     void CalculateDysonSphereAcceleration();
     void CalculateGravityAcceleration();
     void CalculatePosition();

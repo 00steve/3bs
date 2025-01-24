@@ -44,6 +44,7 @@ public:
     virtual void Draw() = 0;
     virtual MenuAction* GetAction() = 0;
     StaticList<MenuOption*> Options();
+    void RemoveAllOptions();
     virtual void Run() = 0;
     bool ScrollLoop();
     bool ScrollLoop(bool loop);

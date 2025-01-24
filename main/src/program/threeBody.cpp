@@ -22,6 +22,33 @@ int ThreeBody::BodyCount(){
     return bodyCount;
 }
 
+void ThreeBody::BuildBodiesMenu(){
+    bodiesMenu->RemoveAllOptions();
+    bodiesMenu->AddOption(new MenuBack(CCTC("Back")));
+    int m = bodyCount;
+    int i = 0;
+    while(i < m){
+        std::string p1 = CCTC("B");
+        std::string p2 = CCTC(std::to_string(i).c_str());
+        std::string p3 = CCTC(" mass");
+
+        std::string name = p1 + p2 + p3;
+        MenuVariable* mv = new MenuVariable(CCTC(name.c_str()), &body[i].mass);
+        bodiesMenu->AddOption(mv);
+
+        p3 = CCTC(" vel x");
+        name = p1 + p2 + p3;
+        MenuVariable* vxv = new MenuVariable(CCTC(name.c_str()), &body[i].velocity.x);
+        bodiesMenu->AddOption(vxv);
+
+
+
+
+
+        ++i;
+    }
+}
+
 void ThreeBody::CalculateDysonSphereAcceleration(){
     for(int i = 0;i < bodyCount; i++){
         TB3F rad = body[i].position.Normalized() * maxRadius;
@@ -120,10 +147,11 @@ void ThreeBody::Draw(){
     display->setTextSize(1);
     display->setTextColor(WHITE);
     display->setCursor(66, 0);
-    int p = FPS();
+    /*int p = FPS();
     display->println("fps:");
     display->setCursor(96, 0);
     display->println(p);
+    */
 
     //if there is a menu, do that shit, don't be a fuck
     if(CurrentMenu()){
@@ -291,7 +319,7 @@ bool ThreeBody::SetupMenus(){
     mainMenu->SetMenuAction(&ThreeBody::OnMenuAction, this);
 
     //bodies menu
-    bodiesMenu->AddOption(new MenuBack(CCTC("Back")));
+    BuildBodiesMenu();
     ((VerticalListMenu*)bodiesMenu)->SetInputDown(Inputs()[0]);
     ((VerticalListMenu*)bodiesMenu)->SetInputUp(Inputs()[1]);
     ((VerticalListMenu*)bodiesMenu)->SetInputSelect(Inputs()[2]);
@@ -309,8 +337,9 @@ bool ThreeBody::SetupMenus(){
 
     //sim menu
     simMenu->AddOption(new MenuBack(CCTC("Back")));
-    simMenu->AddOption(new MenuLink(CCTC("Physics"), physicsMenu));
+    simMenu->AddOption(new MenuLink(CCTC("BodyCount")));
     simMenu->AddOption(new MenuLink(CCTC("Bodies"), bodiesMenu));
+    simMenu->AddOption(new MenuLink(CCTC("Physics"), physicsMenu));
     ((VerticalListMenu*)simMenu)->SetInputDown(Inputs()[0]);
     ((VerticalListMenu*)simMenu)->SetInputUp(Inputs()[1]);
     ((VerticalListMenu*)simMenu)->SetInputSelect(Inputs()[2]);
