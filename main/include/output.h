@@ -3,8 +3,9 @@
 
 #include <string>
 #include "mathUtil.h"
+#include "cstrUtil.h"
 
-class Output {
+class Output : public CStrUtil {
 private:
     double outputValueMax = 1;
     double outputValueMin = 0;
@@ -12,6 +13,9 @@ private:
 protected:
 
 public:
+    Output(char* outputName) : 
+            CStrUtil(outputName){
+    };
     double OutputValueMax();
     double OutputValueMin();
     void SetOutputValueLimits(double newOutputValueMin, double newOutputValueMax);

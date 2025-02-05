@@ -14,7 +14,8 @@ bool OutputJackMCP4728::InitializeHardware(){
     return mcpInitialized = mcpInitialized || mcp.begin();
 }
 
-OutputJackMCP4728::OutputJackMCP4728(MCP4728_channel_t channel) :
+OutputJackMCP4728::OutputJackMCP4728(char* outputName, MCP4728_channel_t channel) :
+        Output(outputName),
         channel(channel){
     InitializeHardware();
     CheckConfiguration();

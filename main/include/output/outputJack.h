@@ -11,8 +11,7 @@ private:
     double value = 0;
 
 public:
-    OutputJack();
-    OutputJack(int channel);
+    OutputJack(char* outputName, int channel);
     void Run();
     bool SetValue(double newValue);
 };

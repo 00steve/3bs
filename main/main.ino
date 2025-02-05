@@ -33,10 +33,10 @@ void setup() {
     //Program::AddSystemInput(new RotaryEncoder(CCTC("Rotary Encoder"),9,10,11));
 
     //outputs
-    Program::AddSystemOutput(new OutputJackMCP4728(MCP4728_CHANNEL_A));
-    Program::AddSystemOutput(new OutputJackMCP4728(MCP4728_CHANNEL_B));
-    Program::AddSystemOutput(new OutputJackMCP4728(MCP4728_CHANNEL_C));
-    Program::AddSystemOutput(new OutputJackMCP4728(MCP4728_CHANNEL_D));
+    Program::AddSystemOutput(new OutputJackMCP4728(CCTC("Output Jack 1"),MCP4728_CHANNEL_A));
+    Program::AddSystemOutput(new OutputJackMCP4728(CCTC("Output Jack 2"),MCP4728_CHANNEL_B));
+    Program::AddSystemOutput(new OutputJackMCP4728(CCTC("Output Jack 3"),MCP4728_CHANNEL_C));
+    Program::AddSystemOutput(new OutputJackMCP4728(CCTC("Output Jack 4"),MCP4728_CHANNEL_D));
 
 
     //setup what the inputs and outputs look like, eventually this shit

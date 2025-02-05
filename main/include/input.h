@@ -23,9 +23,6 @@ private:
 public:
                     Input(char* inputName) : 
                             CStrUtil(inputName){
-                        //this->inputName = inputName;
-                        //name = String(this->inputName);
-                        //this->inputName = CStrUtil::Substring(inputName,10);
                     };
     double          InputValueMax();
     double          InputValueMin();

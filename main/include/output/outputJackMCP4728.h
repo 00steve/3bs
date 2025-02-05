@@ -27,7 +27,7 @@ public:
         - MCP4728_CHANNEL_C
         - MCP4728_CHANNEL_D
      */
-    OutputJackMCP4728(MCP4728_channel_t channel);
+    OutputJackMCP4728(char* outputName, MCP4728_channel_t channel);
     bool SetOutputValue(double newOutputValue);
 };
 
