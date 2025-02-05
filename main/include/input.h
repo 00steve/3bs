@@ -27,9 +27,6 @@ public:
     double          InputValueMax();
     double          InputValueMin();
     char*           Name();
-    //String GetName(){
-     //   return name;
-    //}
     virtual bool    SampleValue();
     void            SetInputValueLimits(double newInputValueMin, double newInputValueMax);
     void            SetInputValueMax(double newInputValueMax);

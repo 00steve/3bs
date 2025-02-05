@@ -7,7 +7,6 @@ bool OutputJack::CheckConfiguration(){
     return configured;
 }
 
-
 OutputJack::OutputJack(char* outputName, int channel) :
         Output(outputName),
         channel(channel){

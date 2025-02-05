@@ -13,15 +13,15 @@ private:
 protected:
 
 public:
-    Output(char* outputName) : 
-            CStrUtil(outputName){
-    };
-    double OutputValueMax();
-    double OutputValueMin();
-    void SetOutputValueLimits(double newOutputValueMin, double newOutputValueMax);
-    void SetOutputValueMax(double newOutputValueMax);
-    void SetOutputValueMin(double newOutputValueMin);
-    virtual bool SetOutputValue(double newOutputValue) = 0;
+                    Output(char* outputName) : 
+                            CStrUtil(outputName){
+                    };
+    double          OutputValueMax();
+    double          OutputValueMin();
+    void            SetOutputValueLimits(double newOutputValueMin, double newOutputValueMax);
+    void            SetOutputValueMax(double newOutputValueMax);
+    void            SetOutputValueMin(double newOutputValueMin);
+    virtual bool    SetOutputValue(double newOutputValue) = 0;
 
 };
 

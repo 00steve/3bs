@@ -16,5 +16,4 @@ public:
     bool SetValue(double newValue);
 };
 
-
 #endif
