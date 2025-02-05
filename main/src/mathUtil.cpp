@@ -1,5 +1,11 @@
 #include "../include/mathUtil.h"
 
+
+
+bool MathUtil::Bit(unsigned int input, unsigned int bitPosition){
+    return (input & (1 << bitPosition)) != 0;
+}
+
 /*
 bool MathUtil::IsInteger(std::string string){
     bool decimal;

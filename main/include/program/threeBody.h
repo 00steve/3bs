@@ -14,12 +14,15 @@
 #include "../cstrUtil.h"
 
 #include "../input/inputSoftwareVariable.h"
+#include "../input/inputJackTeensyAnalog.h"
 
 #include "../menuConfiguration.h"
 #include "../menuOption/menuBack.h"
 #include "../menuOption/menuLink.h"
 #include "../menuOption/menuVariable.h"
+
 #include "../menu/verticalListMenu.h"
+#include "../menu/ioMapMenu.h"
 
 
 struct TBBody {
@@ -57,6 +60,7 @@ private:
     //IO
     StaticList<Input*> programInputs = StaticList<Input*>(PROGRAM_AVAILABLE_INPUTS);
     StaticList<Input*> programOutputs = StaticList<Input*>(PROGRAM_AVAILABLE_OUTPUTS);
+    StaticList<IOMap*> ioMaps = StaticList<IOMap*>(PROGRAM_AVAILABLE_IOMAPS);
 
     //display
     int oledReset = -1;
@@ -70,8 +74,10 @@ private:
 
     //menus
     MenuConfiguration verticalListMenuDefault;
+
     Menu* bodiesMenu = NULL;
     Menu* fileMenu = NULL;
+    StaticList<Menu*> ioMenus = StaticList<Menu*>(PROGRAM_AVAILABLE_INPUTS + PROGRAM_AVAILABLE_OUTPUTS);
     Menu* mainMenu = NULL;
     Menu* physicsMenu = NULL;
     Menu* simMenu = NULL;
@@ -94,6 +100,7 @@ protected:
     static TB3F RandomPointInSphere(double sphereRadius);
     static TB3F RandomPointOnSphere(double sphereRadius);
     bool SetupInputs();
+    bool SetupIOMaps();
     bool SetupMenus();
     bool SetupOutputs();
     void Simulate();

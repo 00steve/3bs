@@ -25,6 +25,10 @@ int ThreeBody::BodyCount(){
 void ThreeBody::BuildBodiesMenu(){
     bodiesMenu->RemoveAllOptions();
     bodiesMenu->AddOption(new MenuBack(CCTC("Back")));
+
+    MenuVariable* ival = new MenuVariable(CCTC("Input 4"),Inputs()[6]->ValueRef());
+    bodiesMenu->AddOption(ival);
+
     int m = bodyCount;
     int i = 0;
     while(i < m){
@@ -278,6 +282,13 @@ bool ThreeBody::SetupInputs(){
         a.Insert("Z",labelAxisIndex);
         programInputs.Add(new InputSoftwareVariable(a.Value(), &body[i].acceleration.z));
     }
+    return false;
+}
+
+bool ThreeBody::SetupIOMaps(){
+    //IOMap* iom1 = new IOMap();
+    //ioMaps.Add()
+
     return false;
 }
 

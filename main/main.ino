@@ -59,6 +59,10 @@ void setup() {
     Program::AddSystemInput(new InputJackTeensyAnalog(CCTC("Input Jack 4"),23));
     //Program::AddSystemInput(new RotaryEncoder(CCTC("Rotary Encoder"),9,10,11));
 
+
+    //Program::AddSystemOutput(Output *newOutput)
+
+
     //setup what the inputs and outputs look like, eventually this shit
     //should be part of a program depending on it's own parameters.
     //inputJack0->SetInputValueLimits(-5,5);

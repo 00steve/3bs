@@ -3,9 +3,10 @@
 void MenuVariable::Draw(AABB limits,bool selected){
 
     if(selected){
-        display->fillRect(limits.min.x,limits.min.y,limits.max.x + 64,limits.max.y,WHITE);
+        display->fillRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,WHITE);
+        display->fillRect(limits.max.x+2 ,limits.min.y,limits.max.x + 64,limits.max.y,WHITE);
         display->setTextColor(BLACK);
-        display->setCursor(limits.max.x+2, limits.min.y+3);
+        display->setCursor(limits.max.x+4, limits.min.y+3);
         display->println((*variableRef));
     } else {
         display->drawRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,WHITE);
