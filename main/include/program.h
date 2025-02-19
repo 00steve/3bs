@@ -3,12 +3,12 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
 
 #include "staticList.h"
 #include "input.h"
 #include "output.h"
+#include "screen.h"
 #include "menu.h"
 
 #define PROGRAM_AVAILABLE_INPUTS 200
@@ -22,7 +22,7 @@ private:
     static StaticList<Output*> systemOutputs;
 
 protected:
-    static Adafruit_SSD1306* display;
+    static Screen* screen;
     static StaticList<Menu*> menuStack;
 
     void SampleInputs();
@@ -36,7 +36,7 @@ public:
     Menu* CurrentMenu();
     virtual StaticList<Input*> Inputs() = 0;
     virtual void Run() = 0;
-    static void SetDisplay(Adafruit_SSD1306* newDisplay);
+    static void SetScreen(Screen* newScreen);
     static StaticList<Input*> SystemInputs();
 
 };

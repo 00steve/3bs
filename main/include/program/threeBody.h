@@ -4,7 +4,6 @@
 #include <string>
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
 
 #include "../tb3f.h"

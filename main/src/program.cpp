@@ -1,8 +1,8 @@
 #include "../include/program.h"
 
 //static members
-Adafruit_SSD1306* Program::display;
 StaticList<Menu*> Program::menuStack = StaticList<Menu*>(10);
+Screen* Program::screen;
 StaticList<Input*> Program::systemInputs = StaticList<Input*>(PROGRAM_AVAILABLE_INPUTS);
 StaticList<Output*> Program::systemOutputs = StaticList<Output*>(PROGRAM_AVAILABLE_OUTPUTS);
 
@@ -27,8 +27,8 @@ void Program::SampleInputs(){
     }
 }
 
-void Program::SetDisplay(Adafruit_SSD1306* newDisplay){
-    display = newDisplay;
+void Program::SetScreen(Screen* newScreen){
+    screen = newScreen;
 }
 
 StaticList<Input*> Program::SystemInputs(){

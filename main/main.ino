@@ -5,9 +5,9 @@
 #include "include/input/inputSoftwareVariable.h"
 #include "include/output/outputJackMCP4728.h"
 #include "include/ioMap.h"
+#include "include/screen/screenSSD1306.h"
 
-
-Adafruit_SSD1306 display;
+ScreenSSD1306 screen;
 ThreeBody threeBody;
 Timer timer;
 
@@ -17,9 +17,12 @@ void setup() {
     //the same shit and it just works. Don't change this 
     //shit unless you're smarter than the dum dum who wrote
     //this garbage.
-    Program::SetDisplay(&display);
-    Menu::SetDisplay(&display);
-    MenuOption::SetDisplay(&display);
+
+    //Program::SetDisplay(&display);
+    Program::SetScreen(&screen);
+    //Menu::SetDisplay(&display);
+    //MenuOption::SetDisplay(&display);
+    MenuOption::SetScreen(&screen);
 
     //add all of the inputs/outputs, etc. that are available based on 
     //the hardware and how it is wired up.
@@ -63,14 +66,16 @@ void setup() {
 
 
     int oledReset = -1;
-    int screenAddress = 0x3c;
+    //int screenAddress = 0x3c;
     int screenWidth = 128;
     int screenHeight = 64;
-    display = Adafruit_SSD1306(screenWidth, screenHeight, &Wire, oledReset);
-    if(!display.begin(SSD1306_SWITCHCAPVCC, screenAddress)) {
+    screen = ScreenSSD1306(screenWidth, screenHeight, &Wire, oledReset);
+    /*if(!display.begin(SSD1306_SWITCHCAPVCC, screenAddress)) {
         Serial.println(F("SSD1306 allocation failed"));
         for(;;); // Don't proceed, loop forever
     }
+    screen.clearDisplay();
+*/
 
     //initialize threeBody and other junk last because it FUCKS UP everything else
     //before it in memory like if there are pointers or anything interesting.

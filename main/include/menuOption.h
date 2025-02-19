@@ -5,8 +5,8 @@
 #define MENU_OPTION_TYPE_UNDEFINED 0
 #define MENU_OPTION_TYPE_MENULINK 1
 
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
+#include "screen.h"
 #include "aabb.h"
 #include "cstrUtil.h"
 #include "menuAction.h"
@@ -17,12 +17,12 @@ private:
     char optionTypeID = MENU_OPTION_TYPE_UNDEFINED;
 
 protected:
-    static Adafruit_SSD1306* display;//reference to the true display
+    static Screen* screen;
 
 public:
-    static Adafruit_SSD1306* Display();
+    //static Screen* Screen();
     virtual void Draw(AABB limits,bool selected) = 0;
-    static void SetDisplay(Adafruit_SSD1306* newDisplay);
+    static void SetScreen(Screen* newScreen);
     virtual MenuAction* GetAction() = 0;
 
 };

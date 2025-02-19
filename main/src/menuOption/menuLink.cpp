@@ -6,14 +6,14 @@ AABB MenuLink::Dimensions(){
 
 void MenuLink::Draw(AABB limits, bool selected){
     if(selected){
-        display->fillRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,WHITE);
-        display->setTextColor(BLACK);
+        screen->fillRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,1);
+        screen->setTextColor(0);
     } else {
-        display->drawRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,WHITE);
-        display->setTextColor(WHITE);
+        screen->drawRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,1);
+        screen->setTextColor(1);
     }
-    display->setCursor(limits.min.x+2, limits.min.y+3);
-    display->println(label);
+    screen->setCursor(limits.min.x+2, limits.min.y+3);
+    screen->println(label);
 }
 
 MenuAction* MenuLink::GetAction(){

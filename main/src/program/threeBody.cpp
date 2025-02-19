@@ -136,13 +136,13 @@ void ThreeBody::Draw(){
     float pixelY;
     float pixelZ;
     int i = bodyCount;
-    display->clearDisplay();
+    screen->clearDisplay();
     
     while(i --> 0){
         pixelX = body[i].position.x * pixelScaleX + screenHalf + pixelOffsetX;
         pixelY = body[i].position.y * pixelScaleY + screenHalf + pixelOffsetY;
         pixelZ = body[i].position.z * pixelScaleZ + (maxSize * .5) + 3;
-        display->drawCircle(pixelX,pixelY,pixelZ,SSD1306_WHITE);
+        screen->drawCircle(pixelX,pixelY,pixelZ,1);
     }
 
     //line to seperate top and bottom, don't know why, just figuring stuff out
@@ -150,9 +150,9 @@ void ThreeBody::Draw(){
 
     //display fps
     //display->fillRect(64,0,64,11,BLACK);
-    display->setTextSize(1);
-    display->setTextColor(WHITE);
-    display->setCursor(66, 0);
+    screen->setTextSize(1);
+    screen->setTextColor(1);
+    screen->setCursor(66, 0);
     /*int p = FPS();
     display->println("fps:");
     display->setCursor(96, 0);
@@ -164,7 +164,7 @@ void ThreeBody::Draw(){
         CurrentMenu()->Draw();
     }
     //do the final update to the screen
-    display->display();
+    screen->display();
 }
 
 int ThreeBody::FPS(){

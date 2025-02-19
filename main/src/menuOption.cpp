@@ -1,11 +1,12 @@
 #include "../include/menuOption.h"
 
-Adafruit_SSD1306* MenuOption::display = NULL;
+Screen* MenuOption::screen;
 
-Adafruit_SSD1306* MenuOption::Display(){
-    return display;
-}
+/*
+Screen* MenuOption::Screen(){
+    return screen;
+}*/
 
-void MenuOption::SetDisplay(Adafruit_SSD1306* newDisplay){
-    display = newDisplay;
+void MenuOption::SetScreen(Screen* newScreen){
+    screen = newScreen;
 }
