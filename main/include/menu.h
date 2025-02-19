@@ -3,7 +3,6 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
 
 
@@ -35,7 +34,6 @@ private:
 
 protected:
     void* actionHandlerObject = NULL;
-    //static Adafruit_SSD1306* display;
     void (*menuActionHandler)(MenuAction* menuAction,void* object);
 
 public:
@@ -48,7 +46,6 @@ public:
     virtual void Run() = 0;
     bool ScrollLoop();
     bool ScrollLoop(bool loop);
-    //static void SetDisplay(Adafruit_SSD1306* newDisplay);
     void SetMenuAction(void (*newMenuActionHandler)(MenuAction* menuAction,void* object), void* newActionHandlerObject);
 };
 
