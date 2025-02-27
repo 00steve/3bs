@@ -14,8 +14,10 @@ private:
     Input* inputSelect = NULL;
     Input* inputUp = NULL;
     unsigned int currentIndex = 0;
+    double currentHideScroll = 0;
     MenuAction* currentMenuAction = NULL;
     double currentPixelScroll = 0;
+    AnimationSlew* hideSlew;
     unsigned int previousCurrentIndex = 0;
     unsigned int rowPixelSize = 15;
     AnimationSlew* scrollSlew;

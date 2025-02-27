@@ -11,7 +11,8 @@ void VerticalListMenu::Draw(){
     unsigned int i = 0;//currentIndex;// > Options().Count()-optionCount ? Options().Count()-optionCount : currentIndex;
     unsigned int length = Options().Count();
     unsigned int sS = (int)scrollSlew->currentValue;
-    AABB drawBox = AABB(0,0-sS,60,rowPixelSize-1);
+    unsigned int hS = (int)hideSlew->currentValue;
+    AABB drawBox = AABB(hS,0-sS,60-hS,rowPixelSize-1);
     while(i < (currentIndex+optionCount+1) && i < length){
         Options()[i]->Draw(drawBox,i == currentIndex);
         ++i;
@@ -90,6 +91,7 @@ void VerticalListMenu::SetInputUp(Input* newInput){
 
 void VerticalListMenu::Setup(){
     scrollSlew = AddSlew(&currentPixelScroll,CURVE_LINEAR,.15);
+    hideSlew = AddSlew(&currentHideScroll,CURVE_LINEAR,1);
 }
 
 VerticalListMenu::VerticalListMenu(){

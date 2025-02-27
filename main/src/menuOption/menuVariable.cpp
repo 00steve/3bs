@@ -10,7 +10,7 @@ void MenuVariable::Draw(AABB limits,bool selected){
         screen->println((*variableRef));
     } else {
         screen->drawRect(limits.min.x,limits.min.y,limits.max.x,limits.max.y,1);
-        screen->setTextColor(0);
+        screen->setTextColor(1);
     }
     screen->setCursor(limits.min.x+2, limits.min.y+3);
     screen->println(label);

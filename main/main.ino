@@ -6,6 +6,7 @@
 #include "include/output/outputJackMCP4728.h"
 #include "include/ioMap.h"
 #include "include/screen/screenSSD1306.h"
+#include "include/screen/screenSSD1351.h"
 
 ScreenSSD1306 screen;
 ThreeBody threeBody;
@@ -52,30 +53,20 @@ void setup() {
     //iom.SetOutput(outputJack1);
 
 
+
     //some default bullshit for testing
     pinMode(13, OUTPUT);
     pinMode(7, OUTPUT);
     pinMode(8, OUTPUT);
 
-
     Serial.begin(9600);
-    //while (!Serial)
-      //delay(10); // will pause Zero, Leonardo, etc until serial console opens
-    //randomSeed(inputJack0->GetValue());
-
-
 
     int oledReset = -1;
     //int screenAddress = 0x3c;
     int screenWidth = 128;
     int screenHeight = 64;
     screen = ScreenSSD1306(screenWidth, screenHeight, &Wire, oledReset);
-    /*if(!display.begin(SSD1306_SWITCHCAPVCC, screenAddress)) {
-        Serial.println(F("SSD1306 allocation failed"));
-        for(;;); // Don't proceed, loop forever
-    }
-    screen.clearDisplay();
-*/
+
 
     //initialize threeBody and other junk last because it FUCKS UP everything else
     //before it in memory like if there are pointers or anything interesting.
