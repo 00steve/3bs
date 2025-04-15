@@ -28,12 +28,14 @@ void ScreenSSD1306::println(double val){
     screen.println(val);
 }
 
-ScreenSSD1306::ScreenSSD1306(){
+ScreenSSD1306::ScreenSSD1306() : 
+        Screen(0,0){
     initialized = false;
 
 }
 
-ScreenSSD1306::ScreenSSD1306(int screenWidth, int screenHeight, TwoWire* Wire, int oledReset) {
+ScreenSSD1306::ScreenSSD1306(int screenWidth, int screenHeight, TwoWire* Wire, int oledReset) :
+        Screen(screenWidth, screenHeight) {
     initialized = true;
     screen = Adafruit_SSD1306(screenWidth, screenHeight, Wire, oledReset);
 

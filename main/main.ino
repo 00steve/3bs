@@ -5,31 +5,29 @@
 #include "include/input/inputSoftwareVariable.h"
 #include "include/output/outputJackMCP4728.h"
 #include "include/ioMap.h"
-#include "include/screen/screenSSD1306.h"
+//#include "include/screen/screenSSD1306.h"
 #include "include/screen/screenSSD1351.h"
 
-ScreenSSD1306 screen;
+//ScreenSSD1306 screen;
+ScreenSSD1351 screen;
 ThreeBody threeBody;
 Timer timer;
 
 void setup() {
-    //definitely need this shit. Pass the display to the 
+    //definitely need this shit. Pass the screen to the 
     //other classes and stuff so they're all referencing
     //the same shit and it just works. Don't change this 
     //shit unless you're smarter than the dum dum who wrote
     //this garbage.
 
-    //Program::SetDisplay(&display);
     Program::SetScreen(&screen);
-    //Menu::SetDisplay(&display);
-    //MenuOption::SetDisplay(&display);
     MenuOption::SetScreen(&screen);
 
     //add all of the inputs/outputs, etc. that are available based on 
     //the hardware and how it is wired up.
     Program::AddSystemInput(new Button(CCTC("<- Button"),0,1));
     Program::AddSystemInput(new Button(CCTC("-> Button"),2,1));
-    Program::AddSystemInput(new Button(CCTC("Rotary button"),10,9,BUTTON_NORMALLY_CLOSED));
+    //Program::AddSystemInput(new Button(CCTC("Rotary button"),10,9,BUTTON_NORMALLY_CLOSED));
     Program::AddSystemInput(new InputJackTeensyAnalog(CCTC("Input Jack 1"),20));
     Program::AddSystemInput(new InputJackTeensyAnalog(CCTC("Input Jack 2"),21));
     Program::AddSystemInput(new InputJackTeensyAnalog(CCTC("Input Jack 3"),22));
@@ -64,9 +62,10 @@ void setup() {
     int oledReset = -1;
     //int screenAddress = 0x3c;
     int screenWidth = 128;
-    int screenHeight = 64;
-    screen = ScreenSSD1306(screenWidth, screenHeight, &Wire, oledReset);
-
+    int screenHeight = 128;
+    //screen = ScreenSSD1306(screenWidth, screenHeight, &Wire, oledReset);
+    //int screenWidth, int screenHeight, int csPin, int dcPin, int mosiPin, int sclkPin, int rstPin)
+    screen = ScreenSSD1351(screenWidth, screenHeight,10,15,11,13,14);
 
     //initialize threeBody and other junk last because it FUCKS UP everything else
     //before it in memory like if there are pointers or anything interesting.
@@ -78,5 +77,5 @@ void setup() {
 void loop() {
     //three body simulation. It's pretty important, chump:
     threeBody.Run();
-    digitalWriteFast(13,Program::SystemInputs()[2]->Value());
+    //digitalWriteFast(13,Program::SystemInputs()[2]->Value());
 }

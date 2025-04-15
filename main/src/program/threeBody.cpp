@@ -45,10 +45,6 @@ void ThreeBody::BuildBodiesMenu(){
         MenuVariable* vxv = new MenuVariable(CCTC(name.c_str()), &body[i].velocity.x);
         bodiesMenu->AddOption(vxv);
 
-
-
-
-
         ++i;
     }
 }
@@ -142,7 +138,7 @@ void ThreeBody::Draw(){
         pixelX = body[i].position.x * pixelScaleX + screenHalf + pixelOffsetX;
         pixelY = body[i].position.y * pixelScaleY + screenHalf + pixelOffsetY;
         pixelZ = body[i].position.z * pixelScaleZ + (maxSize * .5) + 3;
-        screen->drawCircle(pixelX,pixelY,pixelZ,1);
+        screen->drawCircle(pixelX,pixelY,pixelZ,WHITE);
     }
 
     //line to seperate top and bottom, don't know why, just figuring stuff out
@@ -151,7 +147,7 @@ void ThreeBody::Draw(){
     //display fps
     //display->fillRect(64,0,64,11,BLACK);
     screen->setTextSize(1);
-    screen->setTextColor(1);
+    screen->setTextColor(WHITE);
     screen->setCursor(66, 0);
     /*int p = FPS();
     display->println("fps:");
